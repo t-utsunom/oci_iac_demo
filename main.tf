@@ -59,7 +59,7 @@ resource "oci_core_subnet" "test_subnet" {
     cidr_block = var.subnet_cidr_block
     display_name = "Public_Subnet"
 }
-/*
+
 resource "oci_core_instance" "test_instance" {
     #Required
     availability_domain = var.instance_availability_domain
@@ -67,11 +67,8 @@ resource "oci_core_instance" "test_instance" {
     shape = var.instance_shape
 
     create_vnic_details {
-
-        #Optional
-        assign_ipv6ip = var.instance_create_vnic_details_assign_ipv6ip
-        assign_public_ip = var.instance_create_vnic_details_assign_public_ip
-        subnet_cidr = var.instance_create_vnic_details_subnet_cidr
+        assign_public_ip = true
+        subnet_cidr = var.subnet_cidr_block
         subnet_id = oci_core_subnet.test_subnet.id
     }
     display_name = var.instance_display_name
@@ -84,23 +81,16 @@ resource "oci_core_instance" "test_instance" {
     }
     source_details {
         #Required
-        source_id = oci_core_image.test_image.id
         source_type = "image"
 
-        #Optional
-        boot_volume_size_in_gbs = var.instance_source_details_boot_volume_size_in_gbs
-        boot_volume_vpus_per_gb = var.instance_source_details_boot_volume_vpus_per_gb
         instance_source_image_filter_details {
             #Required
             compartment_id = var.compartment_id
 
             #Optional
-            defined_tags_filter = var.instance_source_details_instance_source_image_filter_details_defined_tags_filter
             operating_system = var.instance_source_details_instance_source_image_filter_details_operating_system
             operating_system_version = var.instance_source_details_instance_source_image_filter_details_operating_system_version
         }
     }
     preserve_boot_volume = false
-    user_data = 
 }
-*/
