@@ -58,8 +58,8 @@ resource "oci_core_subnet" "test_subnet" {
     #Optional
     cidr_block = var.subnet_cidr_block
     display_name = "Public_Subnet"
-    route_table_id = oci_core_default_route_table.default_route_table.id
-    security_list_ids = oci_core_default_security_list.default_security_list.id
+    route_table_id = oci_core_vcn.test_vcn.default_route_table_id
+    security_list_ids = oci_core_vcn.test_vcn.default_security_list_id
 }
 /*
 resource "oci_core_instance" "test_instance" {
