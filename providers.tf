@@ -12,6 +12,7 @@ provider "oci" {
   region           = var.region
 }
 
+/*
 # Variables required by the OCI Provider only when running Terraform CLI with standard user based Authentication
 variable "user_ocid" {
 }
@@ -21,3 +22,4 @@ variable "fingerprint" {
 
 variable "private_key_path" {
 }
+*/
