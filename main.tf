@@ -49,23 +49,19 @@ resource "oci_core_default_security_list" "test_security_list" {
             }
     }
 }
-/*
+
 resource "oci_core_subnet" "test_subnet" {
     #Required
     compartment_id = var.compartment_id
     vcn_id = oci_core_vcn.test_vcn.id
 
     #Optional
-    availability_domain = var.subnet_availability_domain
     cidr_block = var.subnet_cidr_block
-    display_name = var.subnet_display_name
-    ipv4cidr_blocks = var.subnet_ipv4cidr_blocks
-    prohibit_internet_ingress = var.subnet_prohibit_internet_ingress
-    prohibit_public_ip_on_vnic = var.subnet_prohibit_public_ip_on_vnic
-    route_table_id = oci_core_route_table.test_route_table.id
-    security_list_ids = var.subnet_security_list_ids
+    display_name = "Public_Subnet"
+    route_table_id = oci_core_default_route_table.default-route-default_route_table_id
+    security_list_ids = oci_core_default_security_list.default_security_list_id
 }
-
+/*
 resource "oci_core_instance" "test_instance" {
     #Required
     availability_domain = var.instance_availability_domain
