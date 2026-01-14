@@ -65,14 +65,14 @@ resource "oci_core_instance" "test_instance" {
     availability_domain = var.instance_availability_domain
     compartment_id = var.compartment_id
     shape = var.instance_shape
+    display_name = var.instance_display_name
 
     create_vnic_details {
         assign_public_ip = true
         subnet_cidr = var.subnet_cidr_block
         subnet_id = oci_core_subnet.test_subnet.id
     }
-    display_name = var.instance_display_name
-    shape = var.instance_shape
+
     shape_config {
 
         #Optional
