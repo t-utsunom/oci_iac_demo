@@ -6,18 +6,16 @@ resource "oci_core_vcn" "test_vcn" {
     cidr_blocks = var.vcn_cidr_blocks
     display_name = var.vcn_display_name
 }
-
-/*
 resource "oci_core_internet_gateway" "test_internet_gateway" {
     #Required
     compartment_id = var.compartment_id
-    vcn_id = oci_core_vcn.test_vcn.id
+    vcn_id = test_vcn_id
 
     #Optional
     #enabled = var.internet_gateway_enabled
-    route_table_id = oci_core_route_table.test_route_table.id
+    #route_table_id = oci_core_route_table.test_route_table.id
 }
-
+/*
 #VCN作成時のデフォルトでいいかも？GWとルール追加すればOK?
 resource "oci_core_route_table" "test_route_table" {
     #Required
