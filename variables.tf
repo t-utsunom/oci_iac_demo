@@ -33,11 +33,11 @@ variable "instance_shape" {
     default = "VM.Standard.E5.Flex"
 }
 
-variable "memory_in_gbs" {
+variable "instance_shape_config_memory_in_gbs" {
     default = "8"
 }
 
-variable "ocpus" {
+variable "instance_shape_config_ocpus" {
     default = "1"
 }
 
