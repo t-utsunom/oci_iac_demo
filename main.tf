@@ -9,7 +9,7 @@ resource "oci_core_vcn" "test_vcn" {
 resource "oci_core_internet_gateway" "test_internet_gateway" {
     #Required
     compartment_id = var.compartment_id
-    display_name = var.igw_displya_name
+    display_name = "IGW"
     vcn_id = oci_core_vcn.test_vcn.id
 }
 
@@ -20,7 +20,6 @@ resource "oci_core_default_route_table" "default-route-table" {
     compartment_id = var.compartment_id
 
     #Optional
-    display_name = "default_route_table"
     route_rules {
 
         #Required
@@ -31,96 +30,26 @@ resource "oci_core_default_route_table" "default-route-table" {
         destination_type = "CIDR_BLOCK"
     }
 }
-/*
-#VCN作成時のデフォルトでいいかも？
-resource "oci_core_security_list" "test_security_list" {
+
+resource "oci_core_default_security_list" "test_security_list" {
     #Required
     compartment_id = var.compartment_id
     vcn_id = oci_core_vcn.test_vcn.id
 
     #Optional
-    display_name = var.security_list_display_name
-    egress_security_rules {
-        #Required
-        destination = var.security_list_egress_security_rules_destination
-        protocol = var.security_list_egress_security_rules_protocol
-
-        #Optional
-        description = var.security_list_egress_security_rules_description
-        destination_type = var.security_list_egress_security_rules_destination_type
-        icmp_options {
-            #Required
-            type = var.security_list_egress_security_rules_icmp_options_type
-
-            #Optional
-            code = var.security_list_egress_security_rules_icmp_options_code
-        }
-        stateless = var.security_list_egress_security_rules_stateless
-        tcp_options {
-
-            #Optional
-            max = var.security_list_egress_security_rules_tcp_options_destination_port_range_max
-            min = var.security_list_egress_security_rules_tcp_options_destination_port_range_min
-            source_port_range {
-                #Required
-                max = var.security_list_egress_security_rules_tcp_options_source_port_range_max
-                min = var.security_list_egress_security_rules_tcp_options_source_port_range_min
-            }
-        }
-        udp_options {
-
-            #Optional
-            max = var.security_list_egress_security_rules_udp_options_destination_port_range_max
-            min = var.security_list_egress_security_rules_udp_options_destination_port_range_min
-            source_port_range {
-                #Required
-                max = var.security_list_egress_security_rules_udp_options_source_port_range_max
-                min = var.security_list_egress_security_rules_udp_options_source_port_range_min
-            }
-        }
-    }
-    freeform_tags = {"Department"= "Finance"}
     ingress_security_rules {
         #Required
-        protocol = var.security_list_ingress_security_rules_protocol
-        source = var.security_list_ingress_security_rules_source
+        protocol = "6"
+        source = "0.0.0.0/0"
 
-        #Optional
-        description = var.security_list_ingress_security_rules_description
-        icmp_options {
-            #Required
-            type = var.security_list_ingress_security_rules_icmp_options_type
-
-            #Optional
-            code = var.security_list_ingress_security_rules_icmp_options_code
-        }
-        source_type = var.security_list_ingress_security_rules_source_type
-        stateless = var.security_list_ingress_security_rules_stateless
         tcp_options {
-
             #Optional
-            max = var.security_list_ingress_security_rules_tcp_options_destination_port_range_max
-            min = var.security_list_ingress_security_rules_tcp_options_destination_port_range_min
-            source_port_range {
-                #Required
-                max = var.security_list_ingress_security_rules_tcp_options_source_port_range_max
-                min = var.security_list_ingress_security_rules_tcp_options_source_port_range_min
+            max = 8080
+            min = 8080
             }
-        }
-        udp_options {
-
-            #Optional
-            max = var.security_list_ingress_security_rules_udp_options_destination_port_range_max
-            min = var.security_list_ingress_security_rules_udp_options_destination_port_range_min
-            source_port_range {
-                #Required
-                max = var.security_list_ingress_security_rules_udp_options_source_port_range_max
-                min = var.security_list_ingress_security_rules_udp_options_source_port_range_min
-            }
-        }
     }
 }
-
+/*
 resource "oci_core_subnet" "test_subnet" {
     #Required
     compartment_id = var.compartment_id
