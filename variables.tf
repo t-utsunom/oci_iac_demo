@@ -10,6 +10,7 @@ variable "vcn_display_name" {
 }
 
 variable "vcn_cidr_blocks" {
+    type = string
 }
 
 #instance
