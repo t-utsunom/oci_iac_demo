@@ -9,11 +9,11 @@ resource "oci_core_vcn" "test_vcn" {
 resource "oci_core_internet_gateway" "test_internet_gateway" {
     #Required
     compartment_id = var.compartment_id
-    vcn_id = test_vcn_id
+    vcn_id = oci_core_vcn.test_vcn.id
 
     #Optional
     #enabled = var.internet_gateway_enabled
-    #route_table_id = oci_core_route_table.test_route_table.id
+    route_table_id = oci_core_route_table.test_route_table.id
 }
 /*
 #VCN作成時のデフォルトでいいかも？GWとルール追加すればOK?
