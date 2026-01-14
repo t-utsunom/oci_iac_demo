@@ -34,7 +34,7 @@ resource "oci_core_default_route_table" "default-route-table" {
 resource "oci_core_default_security_list" "test_security_list" {
     #Required
     compartment_id = var.compartment_id
-    vcn_id = oci_core_vcn.test_vcn.id
+    manage_default_resource_id = oci_core_vcn.test_vcn.default_security_list_id
 
     #Optional
     ingress_security_rules {
