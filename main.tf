@@ -9,33 +9,29 @@ resource "oci_core_vcn" "test_vcn" {
 resource "oci_core_internet_gateway" "test_internet_gateway" {
     #Required
     compartment_id = var.compartment_id
+    display_name = var.igw_displya_name
     vcn_id = oci_core_vcn.test_vcn.id
-
-    #Optional
-    #enabled = var.internet_gateway_enabled
-    #route_table_id = oci_core_route_table.test_route_table.id
 }
-/*
-#VCN作成時のデフォルトでいいかも？GWとルール追加すればOK?
-resource "oci_core_route_table" "test_route_table" {
+
+resource "oci_core_default_route_table" "default-route-table" {
+  manage_default_resource_id = oci_core_vcn.test_vcn.default_route_table_id
+
     #Required
     compartment_id = var.compartment_id
-    vcn_id = oci_core_vcn.test_vcn.id
 
     #Optional
-    display_name = var.route_table_display_name
+    display_name = "default_route_table"
     route_rules {
+
         #Required
         network_entity_id = oci_core_internet_gateway.test_internet_gateway.id
 
         #Optional
-        cidr_block = var.route_table_route_rules_cidr_block
-        description = var.route_table_route_rules_description
-        destination = var.route_table_route_rules_destination
-        destination_type = var.route_table_route_rules_destination_type
+        destination = "0.0.0.0/0"
+        destination_type = "CIDR_BLOCK"
     }
 }
-
+/*
 #VCN作成時のデフォルトでいいかも？
 resource "oci_core_security_list" "test_security_list" {
     #Required
