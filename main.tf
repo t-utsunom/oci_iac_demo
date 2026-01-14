@@ -93,4 +93,7 @@ resource "oci_core_instance" "test_instance" {
         }
     }
     preserve_boot_volume = false
+    metadata = {
+        user_data = base64encode(file("startup.sh"))
+    }
 }
