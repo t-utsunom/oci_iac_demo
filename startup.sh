@@ -8,6 +8,7 @@ sudo mkdir -p /usr/share/nginx/html
 echo '<!DOCTYPE html>
 <html lang="ja">
 <head>
+<meta charset="utf-8">
 <title>DemoPage</title>
 </head>
 <body>
