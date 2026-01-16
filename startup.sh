@@ -11,7 +11,8 @@ echo '<!DOCTYPE html>
 <title>DemoPage</title>
 </head>
 <body>
-<h1>This is a demo page</h1>
+<h1>デモ用のページです。</h1>
+<p>OCI上にTerraformで作成したインスタンスに接続できました。</p>
 </body>
 </html>' | sudo tee /usr/share/nginx/html/index.html
 
