@@ -4,7 +4,7 @@
 sudo dnf install -y nginx
 
 # サンプルHTML作成
-sudo mkdir -p /var/www/html/
+sudo mkdir -p /usr/share/nginx/html
 echo '<!DOCTYPE html>
 <html>
 <head>
@@ -13,13 +13,10 @@ echo '<!DOCTYPE html>
 <body>
 <h1>This is a demo page</h1>
 </body>
-</html>' | sudo tee /var/www/html/demo.html
+</html>' | sudo tee /usr/share/nginx/html/index.html
 
 #ポート8080用に設定ファイル編集（/etc/nginx/nginx.conf）
 sudo sed -i 's/listen       80;/listen       8080;/' /etc/nginx/nginx.conf
-
-#デフォルトでindexにdemo.htmlが含まれるよう編集
-sudo sed -i 's/index  index.html index.htm;/index  demo.html index.html index.htm;/' /etc/nginx/nginx.conf
 
 # nginx自動起動＆起動
 sudo systemctl enable nginx
