@@ -6,7 +6,7 @@ sudo dnf install -y nginx
 # サンプルHTML作成
 sudo mkdir -p /usr/share/nginx/html
 echo '<!DOCTYPE html>
-<html>
+<html lang="ja">
 <head>
 <title>DemoPage</title>
 </head>
