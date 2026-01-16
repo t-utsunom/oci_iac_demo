@@ -48,6 +48,11 @@ resource "oci_core_default_security_list" "default_security_list" {
             min = 8080
             }
     }
+    egress_security_rules {
+        #Required
+        protocol = "6"
+        destination = "0.0.0.0/0"
+    }    
 }
 
 resource "oci_core_subnet" "test_subnet" {
