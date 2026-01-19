@@ -94,7 +94,7 @@ resource "oci_core_instance" "test_instance" {
     source_details {
         #Required
         source_type = "image"
-        image_id =data.oci_core_images.instance_images.images[0].id
+        source_id =data.oci_core_images.instance_images.images[0].id
     }
     preserve_boot_volume = false
     metadata = {
