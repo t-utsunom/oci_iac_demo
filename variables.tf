@@ -40,11 +40,3 @@ variable "instance_shape_config_memory_in_gbs" {
 variable "instance_shape_config_ocpus" {
     default = "1"
 }
-
-variable "instance_source_details_instance_source_image_filter_details_operating_system" {
-    default = "Oracle Linux"
-}
-
-variable "instance_source_details_instance_source_image_filter_details_operating_system_version" {
-    default = "9"
-}
