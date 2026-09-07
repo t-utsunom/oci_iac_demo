@@ -1,0 +1,26 @@
+title: OCI_IaC_Demo
+description: "デモ用のスキーマファイル"
+schemaVersion: 1.1.0
+
+variables:
+    compartment_id:
+        type: oci:identity:compartment:id
+        title: "コンパートメント"
+        description: "リソースを作成するコンパートメントを選択します"
+        required: true
+
+    instance_availability_domain:
+        type: oci:identity:availabilitydomain:name
+        title: "可用性ドメイン"
+        description: "インスタンスを配置する可用性ドメインを選択します"
+        dependsOn:
+          compartmentId: ${compartment_id}
+
+    ssh_public_key:
+        title: "SSH公開鍵"
+        description: "デフォルトユーザーの ~/.ssh/authorized_keys file に追加するSSH公開鍵を追加します"
+        # renders variable as an SSH key control
+        type: oci:core:ssh:publickey
+        additionalProps:
+            allowMultiple: true
+        required: false

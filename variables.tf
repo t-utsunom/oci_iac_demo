@@ -40,3 +40,8 @@ variable "instance_shape_config_memory_in_gbs" {
 variable "instance_shape_config_ocpus" {
     default = "1"
 }
+
+variable "ssh_public_key" {
+  type    = string
+  default = ""
+}
