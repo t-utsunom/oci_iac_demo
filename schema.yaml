@@ -16,6 +16,13 @@ variables:
         dependsOn:
           compartmentId: ${compartment_id}
 
+    instance_shape:
+        oci:core:instanceshape:name
+        title: "インスタンスのシェイプ"
+        description: "コンピュート・インスタンスのシェイプ名を選択します"
+        dependsOn:
+          compartmentId: ${compartment_id}
+
     ssh_public_key:
         title: "SSH公開鍵"
         description: "デフォルトユーザーの ~/.ssh/authorized_keys file に追加するSSH公開鍵を追加します"

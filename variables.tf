@@ -30,7 +30,6 @@ variable "instance_display_name" {
 }
 
 variable "instance_shape" {
-    default = "VM.Standard.E5.Flex"
 }
 
 variable "instance_shape_config_memory_in_gbs" {
