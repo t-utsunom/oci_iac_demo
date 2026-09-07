@@ -25,7 +25,7 @@ variables:
 
     ssh_public_key:
         title: "SSH公開鍵"
-        description: "デフォルトユーザーの ~/.ssh/authorized_keys file に追加するSSH公開鍵を追加します"
+        description: "デフォルトユーザーの ~/.ssh/authorized_keysファイルに追加するSSH公開鍵を追加します"
         type: oci:core:ssh:publickey
         additionalProps:
             allowMultiple: true
