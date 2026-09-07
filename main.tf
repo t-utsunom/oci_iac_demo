@@ -66,7 +66,7 @@ resource "oci_core_subnet" "test_subnet" {
 }
 
 data "oci_core_images" "instance_images" {
-  compartment_id = "ocid1.compartment.oc1..aaaaaaaausl4joch2menjwcyy22c64wmbclzmo7piqjobli5rqasskcetowq"
+  compartment_id = var.compartment_id
   shape = var.instance_shape
   operating_system = "Oracle Linux"
   sort_by    = "TIMECREATED"
@@ -79,14 +79,11 @@ resource "oci_core_instance" "test_instance" {
     compartment_id = var.compartment_id
     shape = var.instance_shape
     display_name = var.instance_display_name
-
     create_vnic_details {
         assign_public_ip = true
         subnet_id = oci_core_subnet.test_subnet.id
     }
-
     shape_config {
-
         #Optional
         memory_in_gbs = var.instance_shape_config_memory_in_gbs
         ocpus = var.instance_shape_config_ocpus
@@ -94,7 +91,7 @@ resource "oci_core_instance" "test_instance" {
     source_details {
         #Required
         source_type = "image"
-        source_id =data.oci_core_images.instance_images.images[0].id
+        source_id = data.oci_core_images.instance_images.images[0].id
     }
     preserve_boot_volume = false
     metadata = {
