@@ -17,7 +17,7 @@ variables:
           compartmentId: ${compartment_id}
 
     instance_shape:
-        oci:core:instanceshape:name
+        type: oci:core:instanceshape:name
         title: "インスタンスのシェイプ"
         description: "コンピュート・インスタンスのシェイプ名を選択します"
         dependsOn:
@@ -26,7 +26,6 @@ variables:
     ssh_public_key:
         title: "SSH公開鍵"
         description: "デフォルトユーザーの ~/.ssh/authorized_keys file に追加するSSH公開鍵を追加します"
-        # renders variable as an SSH key control
         type: oci:core:ssh:publickey
         additionalProps:
             allowMultiple: true
