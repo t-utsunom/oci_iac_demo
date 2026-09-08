@@ -21,7 +21,6 @@ resource "oci_core_default_route_table" "default_route_table" {
 
     #Optional
     route_rules {
-
         #Required
         network_entity_id = oci_core_internet_gateway.test_internet_gateway.id
 
@@ -41,7 +40,6 @@ resource "oci_core_default_security_list" "default_security_list" {
         #Required
         protocol = "6"
         source = "0.0.0.0/0"
-
         tcp_options {
             #Optional
             max = 8080
